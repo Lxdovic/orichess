@@ -44,7 +44,7 @@
     </div>
     
     <!-- INFO -->
-    <div class='w-fit bg-stone-100 my-10 rounded relative'>
+    <div class='w-[25rem] bg-stone-100 my-10 rounded relative'>
       <div class='bg-[#36B18A] text-white'>
         <h1>Rapid (911)</h1>
       </div>
