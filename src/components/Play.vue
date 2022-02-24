@@ -9,7 +9,7 @@
 </script>
 
 <template>
-  <div class='flex flex-wrap justify-evenly md:px-4 md:gap-4'>
+  <div class='flex flex-col sm:flex-col md:flex-col lg:flex-row justify-evenly md:px-4 md:gap-4'>
 
     <!-- PLAY -->
     <div class='bg-stone-100 rounded'>
@@ -27,7 +27,7 @@
       </div>
 
       <!-- BOARD -->
-      <div class='sm:w-screen w-screen md:w-[48.1rem]' id='myBoard'></div>
+      <div class='sm:w-screen md:w-full lg:w-[48.1rem]' id='myBoard'></div>
       
       <!-- USER -->
       <div class='flex flex-row sm:w-screen w-screen md:w-[48.1rem] p-2 h-16 gap-4'>
@@ -44,7 +44,7 @@
     </div>
     
     <!-- INFO -->
-    <div class='w-[25rem] bg-stone-100 my-10 rounded relative'>
+    <div class='w-full sm:w-full md:w-full lg:w-[15rem] bg-stone-200 my-10 rounded relative'>
       <div class='bg-[#36B18A] text-white'>
         <h1>Rapid (911)</h1>
       </div>
@@ -72,7 +72,7 @@
   export default {
     mounted() {
       addScript('https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js')
-      addScript('src/chess/js/chessboard-1.0.0.js')
+      addScript('/chess/js/chessboard-1.0.0.js')
     },
   }
 

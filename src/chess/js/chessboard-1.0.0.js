@@ -2890,7 +2890,7 @@ if (typeof define !== 'undefined')
     // default piece theme is wikipedia
     if (!config.hasOwnProperty('pieceTheme') ||
         (!isString(config.pieceTheme) && !isFunction(config.pieceTheme))) {
-      config.pieceTheme = 'src/chess/img/chesspieces/wikipedia/{piece}.png'
+      config.pieceTheme = '/chess/img/chesspieces/wikipedia/{piece}.png'
     }
 
     // animation speeds
@@ -4241,7 +4241,7 @@ $(window).resize(board.resize)
 var pgn_elm = document.getElementById('game-pgn')
 var his_elm = document.getElementById('game-his')
 
-var worker = new Worker('../src/engine/js/main.js')
+var worker = new Worker('/engine/js/main.js')
 
 worker.onmessage = function(message) {
   cmd = message.data.cmd
