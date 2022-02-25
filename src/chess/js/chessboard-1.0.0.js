@@ -4270,6 +4270,8 @@ startBtn.onclick = e => {
   playPage.classList.add('visible')
 
   worker.postMessage({cmd: 'SetDifficulty', arg: parseInt(aiSelect.value)})
+
+  board.resize()
 }
 
 $('#myBoard').on('touchstart', function(e) {
