@@ -4158,10 +4158,7 @@ function onDragStart (source, piece) {
   if (game.game_over()) return false
 
   // or if it's not that side's turn
-  if ((game.turn() === 'w' && piece.search(/^b/) !== -1) ||
-      (game.turn() === 'b' && piece.search(/^w/) !== -1)) {
-    return false
-  }
+  if (piece.split('')[0] == 'b') { return false }
 }
 
 function onDrop (source, target) {
@@ -4204,6 +4201,8 @@ function onMouseoverSquare (square, piece) {
     square: square,
     verbose: true
   })
+  
+  if (piece.split('')[0] == 'b') { return false }
 
   // exit if there are no moves available for this square
   if (moves.length === 0) return
