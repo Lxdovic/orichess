@@ -29,6 +29,7 @@ var MAXDEPTH = 64;
 var INFINITE = 30000;
 var MATE = 29000;
 var PVENTRIES = 10000;
+var SEARCHTIME
 
 var FilesBrd = new Array(BRD_SQ_NUM);
 var RanksBrd = new Array(BRD_SQ_NUM);
@@ -813,26 +814,14 @@ function PrMove(move) {
 function PrMove2(move) {	
 	var MvStr;
 	
-	var ff = FilesBrd[FROMSQ(move)];
-	var rf = RanksBrd[FROMSQ(move)];
-	var ft = FilesBrd[TOSQ(move)];
-	var rt = RanksBrd[TOSQ(move)];
+	var ff = FilesBrd[FROMSQ(move)]
+	var rf = RanksBrd[FROMSQ(move)]
+	var ft = FilesBrd[TOSQ(move)]
+	var rt = RanksBrd[TOSQ(move)]
 	
-	MvStr = FileChar[ff] + RankChar[rf] + ' ' + FileChar[ft] + RankChar[rt];
-	var promoted = PROMOTED(move);
-
-	if(promoted != PIECES.EMPTY) {
-		var pchar = 'q';
-		if(PieceKnight[promoted] == BOOL.TRUE) {
-			pchar = 'n';
-		} else if(PieceRookQueen[promoted] == BOOL.TRUE && PieceBishopQueen[promoted] == BOOL.FALSE)  {
-			pchar = 'r';
-		} else if(PieceRookQueen[promoted] == BOOL.FALSE && PieceBishopQueen[promoted] == BOOL.TRUE)   {
-			pchar = 'b';
-		}
-		MvStr += pchar;
-	}
-	return MvStr;
+	MvStr = FileChar[ff] + RankChar[rf] + ' ' + FileChar[ft] + RankChar[rt]
+	
+	return MvStr
 }
 
 function PrintMoveList() {
@@ -1572,7 +1561,7 @@ function ClearPvTable() {
 
 function CheckUp() {
 	if (( performance.now() - SearchController.start ) > SearchController.time) {
-		SearchController.stop == BOOL.TRUE;
+		SearchController.stop = BOOL.TRUE;
 	}
 }
 
@@ -1662,7 +1651,6 @@ function Quiescence(alpha, beta) {
 }
 
 function AlphaBeta(alpha, beta, depth) {
-
 	
 	if(depth <= 0) {
 		return Quiescence(alpha, beta);
@@ -1785,7 +1773,7 @@ function ClearForSearch() {
 }
 
 function SearchPosition() {
-
+	SearchController.time = SEARCHTIME
 	var bestMove = NOMOVE;
 	var bestScore = -INFINITE;
 	var currentDepth = 0;
@@ -1794,11 +1782,12 @@ function SearchPosition() {
 	var c;
 	ClearForSearch();
 	
-	for( currentDepth = 1; currentDepth <= /*SearchController.depth*/ 6; ++currentDepth) {	
+	for( currentDepth = 1; currentDepth <= MAXDEPTH; ++currentDepth) {	
 	
 		bestScore = AlphaBeta(-INFINITE, INFINITE, currentDepth);
 					
 		if(SearchController.stop == BOOL.TRUE) {
+			console.log('ok')
 			break;
 		}
 		
@@ -1829,4 +1818,8 @@ var onmessage = function(message) {
     cmd = message.data.cmd
 	arg = message.data.arg || ''
     eval(cmd + '("' + arg + '")')
+}
+
+function SetDifficulty(x) {
+	SEARCHTIME = x * 1000
 }

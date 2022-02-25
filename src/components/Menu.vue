@@ -25,7 +25,7 @@
         </div>
         
         <div class='container w-64 h-32'>
-          <router-link :to="{ path: '/play' }"><button class='py-2 px-3 w-40 bg-gray-200 rounded hover:bg-[#36B18A] hover:text-white transition-colors'>With the computer</button></router-link>
+          <router-link :to="{ path: '/computer' }"><button class='py-2 px-3 w-40 bg-gray-200 rounded hover:bg-[#36B18A] hover:text-white transition-colors'>With the computer</button></router-link>
           <p class='pt-6 text-gray-400'>Play against the computer</p>
         </div>
       </div>

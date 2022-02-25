@@ -2,16 +2,13 @@
   import Nav from './components/Nav.vue'
   import Menu from './components/Menu.vue'
   import Footer from './components/Footer.vue'
-  import Play from './components/Play.vue'
+  import Computer from './components/Computer.vue'
 
 </script>
 
 <template>
   <Nav/>
-  <!-- <Menu/> -->
-
   <router-view/>
-
   <Footer/>
 </template>
 

@@ -4250,7 +4250,25 @@ worker.onmessage = function(message) {
 }
 
 function AImove(move) {
-  game.move({ from: move.split(' ')[0], to: move.split(' ')[1] })
+  game.move({ from: move.split(' ')[0], to: move.split(' ')[1], promotion: 'q' })
   
   board.position(game.fen())
+}
+
+var aiSelectWindow = document.getElementById('ai-selectwindow')
+var aiSelect = document.getElementById('ai-select')
+var startBtn = document.getElementById('ai-start')
+var playPage = document.getElementById('play-page')
+
+startBtn.onclick = e => {
+  if (aiSelect.value == 'Select difficulty') return
+
+  aiSelectWindow.classList.remove('visible')
+  aiSelectWindow.classList.add('hidden')
+  aiSelectWindow.classList.remove('visible')
+  aiSelectWindow.classList.add('hidden')
+  playPage.classList.remove('hidden')
+  playPage.classList.add('visible')
+
+  worker.postMessage({cmd: 'SetDifficulty', arg: parseInt(aiSelect.value)})
 }
