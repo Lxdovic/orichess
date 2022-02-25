@@ -4201,7 +4201,7 @@ function onMouseoverSquare (square, piece) {
     square: square,
     verbose: true
   })
-  
+
   if (piece.split('')[0] == 'b') { return false }
 
   // exit if there are no moves available for this square
@@ -4271,3 +4271,7 @@ startBtn.onclick = e => {
 
   worker.postMessage({cmd: 'SetDifficulty', arg: parseInt(aiSelect.value)})
 }
+
+$('#myBoard').on('touchstart', function(e) {
+    e.preventDefault();
+});
