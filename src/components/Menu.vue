@@ -70,7 +70,7 @@
         }
       },
       created() {
-        axios.get("/assets/history.json").then(response => {
+        axios.get("/assets/json/history.json").then(response => {
           this.games = response.data
         })
       }

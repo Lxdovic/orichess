@@ -51,7 +51,7 @@
       
       <!-- USER -->
       <div class='flex flex-row sm:w-screen w-screen md:w-[48.1rem] p-2 h-16 gap-4'>
-        <img class='rounded-full' src='../assets/me.png'>
+        <img class='rounded-full' src='../assets/icons/me.png'>
         <div class='text-left'>
           <div class='flex flex-row gap-4'>
             <span class=''>User</span>
