@@ -4202,6 +4202,8 @@ function onMouseoverSquare (square, piece) {
     verbose: true
   })
 
+  if (!piece) { return false }
+
   if (piece.split('')[0] == 'b') { return false }
 
   // exit if there are no moves available for this square

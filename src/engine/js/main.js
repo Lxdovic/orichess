@@ -1787,7 +1787,6 @@ function SearchPosition() {
 		bestScore = AlphaBeta(-INFINITE, INFINITE, currentDepth);
 					
 		if(SearchController.stop == BOOL.TRUE) {
-			console.log('ok')
 			break;
 		}
 		
@@ -1821,5 +1820,6 @@ var onmessage = function(message) {
 }
 
 function SetDifficulty(x) {
+	MAXDEPTH = x * 2
 	SEARCHTIME = x * 1000
 }
