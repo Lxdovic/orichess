@@ -78,8 +78,8 @@
 
       <!-- CONTROLS -->
       <div class='bg-stone-400 bottom-0 absolute w-full h-10 flex gap-4 p-1'>
-        <button class='ml-3 transition hover:bg-stone-500 rounded w-10 flex justify-center p-1'><img class='h-5/6' src='../assets/icons/back.png'></button>
-        <button class='ml-3 transition hover:bg-stone-500 rounded w-10 flex justify-center p-1'><img class='h-5/6' src='../assets/icons/forward.png'></button>
+        <button onclick='undomove()' class='ml-3 transition hover:bg-stone-500 rounded w-10 flex justify-center p-1'><img class='h-5/6' src='../assets/icons/back.png'></button>
+        <button onclick='redomove()' class='ml-3 transition hover:bg-stone-500 rounded w-10 flex justify-center p-1'><img class='h-5/6' src='../assets/icons/forward.png'></button>
         <button class='ml-auto mr-3 transition hover:bg-stone-500 rounded w-10 flex justify-center p-1'><img class='h-5/6' src='../assets/icons/comment.png'></button>
       </div>
     </div>
@@ -92,7 +92,7 @@
   export default {
     mounted() {
       addScript('https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js')
-      addScript('/chess/js/chessboard-1.0.0.js')
+      addScript('chess/js/chessboard-1.0.0.js')
     },
   }
 

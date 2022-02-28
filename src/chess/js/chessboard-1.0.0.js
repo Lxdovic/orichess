@@ -4279,3 +4279,13 @@ startBtn.onclick = e => {
 $('#myBoard').on('touchstart', function(e) {
     e.preventDefault();
 });
+
+function undomove() {
+  game.undo()
+  game.undo()
+  board.position(game.fen())
+}
+
+function redomove() {
+
+}
