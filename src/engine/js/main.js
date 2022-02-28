@@ -1821,5 +1821,5 @@ var onmessage = function(message) {
 
 function SetDifficulty(x) {
 	MAXDEPTH = x * 2
-	SEARCHTIME = x * 1000
+	SEARCHTIME = x * 400
 }
