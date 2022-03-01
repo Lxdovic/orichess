@@ -3,6 +3,7 @@
   import Menu from './components/Menu.vue'
   import Footer from './components/Footer.vue'
   import Computer from './components/Computer.vue'
+  import Online from './components/Online.vue'
 
 </script>
 

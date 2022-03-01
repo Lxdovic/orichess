@@ -87,12 +87,11 @@
   </div>
 </template>
 
-
 <script defer>
   export default {
     mounted() {
       addScript('https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js')
-      addScript('chess/js/chessboard-1.0.0.js')
+      addScript('src/chess/js/chessboard-1.0.0.js')
     },
   }
 

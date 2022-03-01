@@ -1,11 +1,24 @@
-var express = require('express')
-var path = require('path')
-var history = require('connect-history-api-fallback');
-var serveStatic = require('serve-static')
-app = express()
+const express = require('express')
+const app = express()
+const history = require('connect-history-api-fallback');
+const serveStatic = require('serve-static')
+
 app.use(history())
 app.use(serveStatic(__dirname + '/dist'))
-app.use(serveStatic(__dirname + '/src'))
-var port = process.env.PORT || 3000;
-app.listen(port)
-console.log('server started '+ port)
+app.use(serveStatic(__dirname))
+
+server = app.listen(3001, function(){
+    console.log('server is running on port 3001')
+})
+
+const io = require('socket.io')(server)
+
+console.log(io)
+
+io.on('connection', function(socket) {
+    console.log(socket.id)
+    socket.on('SEND_MESSAGE', function(data) {
+        io.emit('MESSAGE', data)
+        console.log(data)
+    });
+});

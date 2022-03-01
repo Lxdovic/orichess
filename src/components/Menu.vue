@@ -15,7 +15,7 @@
 
       <div class='flex justify-center flex-wrap'>
         <div class='container w-64 h-32'>
-          <router-link :to="{ path: '/home' }"><button class='py-2 px-3 w-40 bg-gray-200 rounded hover:bg-[#36B18A] hover:text-white transition-colors'>Online</button></router-link>
+          <router-link :to="{ path: '/online' }"><button class='py-2 px-3 w-40 bg-gray-200 rounded hover:bg-[#36B18A] hover:text-white transition-colors'>Online</button></router-link>
           <p class='pt-6 text-gray-400'>Play online with other players </p>
         </div>
         
@@ -70,7 +70,7 @@
         }
       },
       created() {
-        axios.get("/assets/json/history.json").then(response => {
+        axios.get("src/assets/json/history.json").then(response => {
           this.games = response.data
         })
       }
