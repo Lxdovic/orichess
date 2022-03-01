@@ -7,13 +7,11 @@ app.use(history())
 app.use(serveStatic(__dirname + '/dist'))
 app.use(serveStatic(__dirname))
 
-server = app.listen(3001, function(){
-    console.log('server is running on port 3001')
+server = app.listen(3000, function(){
+    console.log('server is running on port 3000')
 })
 
 const io = require('socket.io')(server)
-
-console.log(io)
 
 io.on('connection', function(socket) {
     console.log(socket.id)

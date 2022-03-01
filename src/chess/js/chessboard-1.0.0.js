@@ -4289,6 +4289,3 @@ function undomove() {
 function redomove() {
 
 }
-
-localStorage.setItem('test', 'abc')
-sessionStorage.setItem('test', 'abc')

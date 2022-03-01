@@ -13,7 +13,10 @@
         <h1>Online</h1>
         <input id='msgbox' type='text'>
         <button @click='sendMessage()'>Send</button>
-        <p>{{messages}}</p>
+        <div v-for='i in messages' class='bg-stone-100 rounded w-full'>
+            <span class='float-left indent-2'>{{ i.user }}:</span>
+            <span class='float-left indent-2'>{{ i.message }}</span>
+        </div>
     </div>
 </template>
 
@@ -23,21 +26,25 @@
     export default {
         data() {
             return {
-                user: '',
+                user: localStorage.getItem('orichess.com.username') || 'user',
                 message: '',
                 messages: [],
-                socket : io('localhost:3001')
+                socket : io('localhost:3000')
             }
         },
         methods: {
             sendMessage() {
-                var message = document.getElementById('msgbox')
+                var message_elm = document.getElementById('msgbox')
+
+                if (message_elm.value == '') { return }
+
                 this.socket.emit('SEND_MESSAGE', {
                     user: this.user,
-                    message: message.value
+                    message: message_elm.value
                 })
 
                 this.message = ''
+                message_elm.value = ''
             }
         },
         mounted() {
