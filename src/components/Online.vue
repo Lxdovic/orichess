@@ -43,7 +43,7 @@
 
                 this.socket.emit('SEND_MESSAGE', {
                     user: this.user,
-                    message: message.value
+                    message: message_elm.value
                 })
 
                 message.value = ''
