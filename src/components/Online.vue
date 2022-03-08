@@ -9,11 +9,17 @@
 </script>
 
 <template>
-    <div>
-        <h1>Online</h1>
-        <input id='msgbox' type='text'>
-        <button @click='sendMessage()'>Send</button>
-        <p>{{messages}}</p>
+    <div v-if='openchat' class='p-6 flex flex-col gap-4'>
+        <div class='h-[calc(100vh-18.5rem)]'>
+            <div v-for='msg in messages' class='flex flex-col'>
+                <span class='font-bold text-left'>{{msg.user}}</span>
+                <span class='font-regular text-left break-words'>{{msg.message}}</span>
+            </div>
+        </div>
+
+        <div class='flex mt-auto gap-4 justify-center'>
+            <textarea v-on:keyup.enter="sendMessage()" id='msgbox' autofocus placeholder='Send a message' rows="5" maxlength='1024' class='resize-none h-[3rem] indent-2 outline-none bg-gray-100 w-full'></textarea>
+        </div>
     </div>
 </template>
 
@@ -24,28 +30,43 @@
         data() {
             return {
                 user: '',
-                message: '',
                 messages: [],
-                socket : io('localhost:3001')
+                openchat: true,
+                socket : io('localhost:3001', { transports : ['websocket'] })
             }
         },
         methods: {
             sendMessage() {
                 var message = document.getElementById('msgbox')
+                
+                if (message.value == '') { return }
+
                 this.socket.emit('SEND_MESSAGE', {
                     user: this.user,
                     message: message.value
                 })
 
-                this.message = ''
+                message.value = ''
             }
         },
         mounted() {
             this.socket.on('MESSAGE', (data) => {
                 this.messages = [...this.messages, data]
             })
+
+            this.socket.on('CREATE_USERNAME', (data) => {
+                this.user = 'User' + data
+            })
         }
     }
 </script>
 
-<style scoped></style>
+<style scoped>
+    .breakword {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-all;
+    word-break: break-word;
+    hyphens: auto;
+    }
+</style>
