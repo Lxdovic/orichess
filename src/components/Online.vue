@@ -11,7 +11,7 @@
 <template>
     <div v-if='openchat' class='p-6 flex flex-col gap-4'>
         <div class='h-[calc(100vh-18.5rem)]'>
-            <div v-for='msg in messages' class='flex flex-col'>
+            <div v-for='msg in messages' :key='msg' class='flex flex-col'>
                 <span class='font-bold text-left'>{{msg.user}}</span>
                 <span class='font-regular text-left break-words'>{{msg.message}}</span>
             </div>
@@ -43,7 +43,7 @@
 
                 this.socket.emit('SEND_MESSAGE', {
                     user: this.user,
-                    message: message_elm.value
+                    message: message.value
                 })
 
                 message.value = ''
@@ -61,12 +61,4 @@
     }
 </script>
 
-<style scoped>
-    .breakword {
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-    word-break: break-all;
-    word-break: break-word;
-    hyphens: auto;
-    }
-</style>
+<style scoped></style>
